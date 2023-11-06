@@ -1,0 +1,160 @@
+{% load  static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html lang="en">
+  <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <!--cs-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+        <link href-"{% static 'app/css/style.css' %}" rel="stylesheet" />
+        <link href-"{% static 'app/css/owl.carousel.css' %}" rel="stylesheet" />
+        <link href-"{% static 'app/css/all.min.css' %}" rel="stylesheet" />
+        <link href="stylesheet" type="text/css" href="{%static 'app/css/main.css' %}">
+        <!--js-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <script src="{% static 'app/js/owl.carousel.min.js' %}" > </script>
+        <script src="{% static 'app/js/all.min.js' %}" > </script> 
+        <script src="{% static 'app/js/myscript.js' %}" > </script> 
+        <script type="text/javascript">
+            var user ='{{request.user}}'
+            function getCookie(name) {
+                let cookieValue = null;
+                if (document.cookie && document.cookie !== '') {
+                    const cookies = document.cookie.split(';');
+                    for (let i = 0; i < cookies.length; i++) {
+                        const cookie = cookies[i].trim();
+                        // Does this cookie string begin with the name we want?
+                        if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                            cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                            break;
+                        }
+                    }
+                }
+                return cookieValue;
+            }
+            const csrftoken = getCookie('csrftoken');
+        </script>
+        
+        <title> Gunga Online</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+          body {
+              background-image: url("{% static 'app/images/Leuk voor kids → AK-47 Kalasjnikov.gif' %}");
+              background-size: cover;
+              background-repeat: no-repeat;
+              background-attachment: fixed;
+          }
+        </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+            <!-- Logo và nút toggle -->
+            <a class="navbar-brand" href="{% url 'home' %}">
+                <img src="{% static 'app/images/GUN.png' %}" width="70" height="80" />
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <!-- Mục Trang Chủ -->
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Trang Chủ</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Sản Phẩm
+                        </a>
+                        <!-- Dropdown Sản Phẩm -->
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Firearms</a></li>
+                            <li><a class="dropdown-item" href="#">Ammunition</a></li>
+                            <!-- Thêm các loại súng khác vào đây -->
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Sight n Optics</a></li>
+                        </ul>
+                    </li>
+                    <!-- Hết Dropdown Sản Phẩm -->
+
+                    <!-- Mục Giới Thiệu và Liên Hệ -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'cart' %}">Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Liên Hệ</a>
+                    </li>
+                </ul>
+                <!-- Form tìm kiếm -->
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            <!-- Mục Người Dùng, Giỏ Hàng, Đăng Nhập và Đăng Ký -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <div class="form-inline my-2 my-lg-0">
+                    <span>Hello! {{request.user}}</span>
+                    <span><a href="{% url 'logout' %}">Logout </a></span>
+
+                </div>
+
+                <!-- Mục Giỏ Hàng, Đăng Nhập và Đăng Ký -->
+                
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Đăng Nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Đăng Ký</a>
+                </li>
+            </ul>
+            <div class="form-inline my-2 my-lg-0">
+                <a href="{% url 'cart' %}" ><img id='cart-icon' src="{% static 'images/cart.png' %}}"></a>
+                <p id='cart-total'>{{cardItems}}</p>
+            </div>
+        </div>
+    </nav>
+    <!-- Hết Header -->
+
+    <!-- Main Body -->
+    {% block banner_slider %} {% endblock banner_slider %}
+    {% block main-content %} {% endblock main-content %}
+    {% block cart_content %} {% endblock cart_content %}
+    {% block content_checkout %} {% endblock content_checkout %}
+    {% block register %} {% endblock register %}
+
+
+
+    <!-- Footer -->
+    <footer class="container-fluid bg-dark text-white text-center p-3">
+        <div class="row">
+            <div class="col-lg-12">
+                <p>&copy; 2023 HandsGunZz. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/haongtandung" class="text-white mx-2" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                    <a href="https://twitter.com/?lang=vi" class="text-white mx-2" target="_blank"><i
+                            class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/dungztrz_811/" class="text-white mx-2" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://www.youtube.com/channel/UCnJL6L-4TjNWMJEp8mK-cOg" class="text-white mx-2"
+                        target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="{% static 'app/js/cart.js' %}" > </script> 
+  </body>
+</html>
